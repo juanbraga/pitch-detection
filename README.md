@@ -1,2 +1,2 @@
 # pitch-detection
-Pitch Detection for Flute Tesis
+Pitch Detection for Score Following of flute compositions
