@@ -1,2 +1,3 @@
-# pitch-detection
-Pitch Detection for Score Following of flute compositions
+#pitch-detection
+##pitch detection for _Score Following_ of flute compositions
+Implementation over Matlab
