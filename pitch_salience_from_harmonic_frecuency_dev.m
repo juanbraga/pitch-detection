@@ -1,6 +1,7 @@
 % pruebas de pitch salience function from harmoic 
 % frecuency deviations
-clear all, close all;
+clear all
+close all
 
 addpath ../../dataset_tradicional/audio/mono
 addpath ../../extraccion_reconocimiento_RWC/onset_detection/dataset/adler_thestudyoforchestration 
