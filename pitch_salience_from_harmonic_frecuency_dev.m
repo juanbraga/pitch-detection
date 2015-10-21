@@ -3,16 +3,19 @@
 clear all
 close all
 
-addpath ./dataset
+addpath ./functions/
+addpath ./dataset/
+addpath ./dataset/adler_thestudyoforchestration
 
-wavname = 'BWV_1013_Allemande_fragmento1.wav';
+wavname = 'allegromolto_dvoraksymph9_firstmovement.wav';
+%wavname = 'BWV_1013_Allemande_fragmento1.wav';
 
 [x,fs,nbits]=wavread(wavname);
 t=0:1/fs:(length(x)-1)/fs;  
 x=x(:,1);
 
-%M=csvread('aubioPitchDetector_SpectralComb.csv');
-%M2=csvread('aubioPitchDetector_SpectralComb2.csv');
+M=csvread('aubioPitchDetector_SpectralComb.csv');
+M2=csvread('aubioPitchDetector_SpectralComb2.csv');
 
 figure('Name', 'SoundWave'), plot(t, x, 'r'), grid on,
 title('SoundWave'), xlabel('seg'), ylabel('amplitude');
