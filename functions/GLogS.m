@@ -1,4 +1,5 @@
 function [G f]=GLogS(fi,ff,fmax,S,F)
+%GLogS Writting help text undone!
 
 [n,m]=size(S);
 
@@ -21,3 +22,5 @@ for i=1:length(f)
 end
 
 G=aG;
+
+end

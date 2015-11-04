@@ -1,4 +1,4 @@
-% pruebas de pitch salience function from harmoic 
+cd % pruebas de pitch salience function from harmoic 
 % frecuency deviations
 clear all
 close all
@@ -22,13 +22,12 @@ title('SoundWave'), xlabel('seg'), ylabel('amplitude');
 % axis tight, hold on,
 axis([0 max(t) -1 1]);
 
-window_length = 2*2048;
+window_length = 4*2048;
 n_step = 4*256;
-nfft = window_length;
-n_overlap = 0 ;%nfft/2; 
-
+nfft = 2*window_length;
+n_overlap = 0 ;
 %%
-[S,F,T]=spectrogram(x,hanning(nfft),n_overlap,nfft,fs,'yaxis');
+[S,F,T]=spectrogram(x,hanning(window_length),n_overlap,nfft,fs,'yaxis');
 logS=10*log10(abs(S));
 
 figure('Name','Espectrograma'), imagesc(T,F,logS), axis xy,
@@ -48,10 +47,10 @@ title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'),
 hold on, plot(T,F(freq_peaks),'k.'), hold off
 
 %%
-i=100; j=2; alpha=20; beta=10e-5; h=2;
-freq_candidates = sort(F(freq_peaks(:,i)));
-y_gaussian_distance=gaussian_distance(F(freq_peaks(j,i)), alpha, beta, h, freq_candidates);
-figure, plot(freq_candidates,y_gaussian_distance,'*-r'), grid on;
+% i=100; j=2; alpha=20; beta=10e-5; h=2;
+% freq_candidates = sort(F(freq_peaks(:,i)));
+% y_gaussian_distance=gaussian_distance(F(freq_peaks(j,i)), alpha, beta, h, freq_candidates);
+% figure, plot(freq_candidates,y_gaussian_distance,'*-r'), grid on;
 
 %%
 alpha=20; beta=10e-5;

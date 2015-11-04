@@ -1,4 +1,5 @@
 function P=logHPS(S,k)
+%logHPS Writting help text undone!
 
 [n,m]=size(S);
 
@@ -12,3 +13,5 @@ for i=2:k
 end
 
 P=aHPS;
+
+end
