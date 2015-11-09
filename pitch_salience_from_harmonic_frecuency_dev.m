@@ -1,4 +1,4 @@
-cd % pruebas de pitch salience function from harmoic 
+% pruebas de pitch salience function from harmoic 
 % frecuency deviations
 clear all
 close all
@@ -17,6 +17,7 @@ x=x(:,1);
 M=csvread('aubioPitchDetector_SpectralComb.csv');
 M2=csvread('aubioPitchDetector_SpectralComb2.csv');
 
+%%help 
 figure('Name', 'SoundWave'), plot(t, x, 'r'), grid on,
 title('SoundWave'), xlabel('seg'), ylabel('amplitude');
 % axis tight, hold on,
@@ -25,16 +26,17 @@ axis([0 max(t) -1 1]);
 window_length = 4*2048;
 n_step = 4*256;
 nfft = 2*window_length;
-n_overlap = 0 ;
+n_overlap = window_length/2 ;
 %%
 [S,F,T]=spectrogram(x,hanning(window_length),n_overlap,nfft,fs,'yaxis');
 logS=10*log10(abs(S));
 
 figure('Name','Espectrograma'), imagesc(T,F,logS), axis xy,
 title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'),
-hold on, plot(M(:,1),M(:,2),'k*'), plot(M2(:,1),M2(:,2),'w*'), hold off
+% hold on, plot(M(:,1),M(:,2),'k*'), plot(M2(:,1),M2(:,2),'w*'), hold off
 
 %%
+
 npeaks=40;
 for i=1:size(S,2);
     [aux_amp, aux_frecs]=findpeaks(abs(S(:,i)),'sortstr', 'descend');
@@ -44,7 +46,7 @@ end
 
 figure('Name','Espectrograma'), imagesc(T,F,logS), axis xy,
 title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'),
-hold on, plot(T,F(freq_peaks),'k.'), hold off
+hold on, plot(T,freq_peaks,'k.'), hold off
 
 %%
 % i=100; j=2; alpha=20; beta=10e-5; h=2;
