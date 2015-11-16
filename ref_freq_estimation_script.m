@@ -40,7 +40,7 @@ title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)');
 
 %% Spectral peaks estimation
 
-npeaks=1;
+npeaks=40;
 for i=1:size(S,2);
     [aux_amp, aux_frecs]=findpeaks(P(:,i),'sortstr', 'descend');
     amp_peaks(:,i)=aux_amp(1:npeaks);
@@ -56,8 +56,9 @@ hold on, plot(T,freq_peaks,'k.'), hold off
 
 circular_cents_distance_peaks=circular_cents_distance(freq_peaks,440);
 phi_peaks=cents2phi(circular_cents_distance_peaks);
-figure, polar(phi_peaks,ones(1,length(phi_peaks)),'*');
+% figure, polar(phi_peaks,ones(1,length(phi_peaks)),'*');
 [real, img]=complex_weighted_mean(phi_peaks, amp_peaks);
 [delta_cents, confidence]=complex2cents(real, img)
+fref=440*2^(delta_cents/1200)
 
 
