@@ -82,16 +82,15 @@ for i=1:length(T)
 end
 
 %%
+
+[midi, freq, fbounds] = tempered_scale(fref);
+
 figure('Name','Espectrograma'), imagesc(T,F,logS), axis xy,
 title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'),
 hold on, plot(T,freq_estimated), hold off
 
-%%
-k=7;
-hps=HPS(S,k);
-figure, imagesc(T,F,10*log10(hps)), axis xy;
+figure('Name','Espectrograma'), imagesc(T,F,logS), axis xy,
+title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'), 
+axis([0 T(end) fbounds(1) fbounds(end)]),
+hold on, plot(T,freq_estimated), hold off
 
-fi=20; ff=4000; %Hz
-fmax=10000; %Hz
-[G f]=GLogS(fi,ff,fmax,S,F);
-figure, imagesc(T,f,G);
