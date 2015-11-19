@@ -83,14 +83,22 @@ end
 
 %%
 
+[midi, freq440, fbounds] = tempered_scale(440);
 [midi, freq, fbounds] = tempered_scale(fref);
 
-figure('Name','Espectrograma'), imagesc(T,F,logS), axis xy,
-title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'),
-hold on, plot(T,freq_estimated), hold off
+% figure('Name','Espectrograma'), imagesc(T,F,logS), axis xy,
+% title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'),
+% hold on, plot(T,freq_estimated), hold off
 
 figure('Name','Espectrograma'), imagesc(T,F,logS), axis xy,
 title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'), 
-axis([0 T(end) fbounds(1) fbounds(end)]),
-hold on, plot(T,freq_estimated), hold off
+axis([0 T(end) fbounds(1) fbounds(end)]), hold on, 
+plot(T,freq_estimated), 
+for i=1:length(freq) 
+    hline = refline(0,freq(i));    
+    set(hline,'Color','b')
+    hline = refline(0,freq440(i));    
+    set(hline,'Color','k')
+end
+hold off
 
