@@ -91,13 +91,11 @@ end
 % hold on, plot(T,freq_estimated), hold off
 
 black = abs(1-gray);
-salience_map=zeros(logS);
-salience_map()
 
 figure('Name','Espectrograma'), imagesc(T,F,logS()), colormap(black), axis xy,
 title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'), 
 axis([0 T(end) fbounds(1) fbounds(end)]), hold on, 
-plot(T,freq_estimated), 
+plot(T,freq_estimated, '+r'), 
 % for i=1:length(freq) 
 %     hline = refline(0,freq(i));    
 %     set(hline,'Color','b')
