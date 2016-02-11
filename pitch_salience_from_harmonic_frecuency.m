@@ -13,7 +13,7 @@ wavname = 'BWV_1013_Allemande_fragmento1.wav';
 % wavname = 'density_fragmento_2.wav';
 % wavname = 'Debussy_Syrinx_fragmento1.wav';
 
-[x,fs,nbits]=wavread(wavname);
+[x,fs]=audioread(wavname);
 t=0:1/fs:(length(x)-1)/fs;  
 % x=x(:,1);
 
