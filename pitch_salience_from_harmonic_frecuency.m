@@ -4,14 +4,12 @@ clear all
 close all
 
 addpath ./functions/
-addpath ./dataset/
-addpath ./dataset/adler_thestudyoforchestration
+addpath ../../traditional-dataset-repo/allemande/fragments
+addpath ../../traditional-dataset-repo/density/fragments
 
-wavname = 'BWV_1013_Allemande_fragmento1.wav';
-% wavname = 'density_fragmento_tecleo.wav';
-% wavname = 'density_fragmento_inicio.wav';
-% wavname = 'density_fragmento_2.wav';
-% wavname = 'Debussy_Syrinx_fragmento1.wav';
+% wavname = 'allemande_first_fragment_nicolet_mono.wav'
+% wavname = 'density_first_fragment_zoon_mono.wav'
+wavname = 'density_fourth_fragment_beauregard_mono.wav'
 
 [x,fs]=audioread(wavname);
 t=0:1/fs:(length(x)-1)/fs;  
@@ -23,7 +21,7 @@ title('SoundWave'), xlabel('seg'), ylabel('amplitude');
 % axis tight, hold on,
 axis([0 max(t) -1 1]);
 
-window_length = 2*2048;
+window_length = 2048;
 hop = window_length/2;
 nfft = 2*window_length;
 n_overlap = window_length - hop ;
@@ -95,7 +93,7 @@ black = abs(1-gray);
 figure('Name','Espectrograma'), imagesc(T,F,logS()), colormap(black), axis xy,
 title('Espectrograma'), xlabel('Tiempo(s)'), ylabel('Frecuencia(Hz)'), 
 axis([0 T(end) fbounds(1) fbounds(end)]), hold on, 
-plot(T,freq_estimated, '+r'), 
+plot(T,freq_estimated, '-r'), 
 % for i=1:length(freq) 
 %     hline = refline(0,freq(i));    
 %     set(hline,'Color','b')
