@@ -4,8 +4,8 @@ clear all
 close all
 
 addpath ./functions/
-addpath ../../traditional-dataset-repo/allemande/fragments
-addpath ../../traditional-dataset-repo/density/fragments
+addpath ../../traditional_dataset/allemande/fragments
+addpath ../../traditional_dataset/density/fragments
 
 % wavname = 'allemande_first_fragment_nicolet_mono.wav'
 % wavname = 'density_first_fragment_zoon_mono.wav'
